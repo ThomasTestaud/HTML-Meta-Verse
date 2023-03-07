@@ -27,17 +27,15 @@ if(array_key_exists('route', $_GET)) {
             break;
             
             case 'refresh':
+                $json = file_get_contents('php://input');
+                $data = json_decode($json, true);
+                $controller = new Models\Objects();
+                $controller->updatePosition($data['positionX'], $data['positionY'], $data['direction'], $data['chatMessage'], $_SESSION['user'], $data['playerType']);
+            
                 $model = new Models\Objects();
                 $objects = $model->getAllObjects();
                 
                 include_once 'views/_RTelements.phtml';
-            break;
-            
-            case 'update':
-                $json = file_get_contents('php://input');
-                $data = json_decode($json, true);
-                $controller = new Models\Objects();
-                $controller->updatePosition($data['positionX'], $data['positionY'], $data['chatMessage'], $_SESSION['user']);
             break;
             
             case 'deco':

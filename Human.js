@@ -9,7 +9,7 @@ class Human {
         this.id = id;
     }
     refresh() {
-        document.querySelector(this.id).style = `top: ${this.positionY}px; left: ${this.positionX}px;`;
+        document.querySelector('#player-human').style = `top: ${this.positionY}px; left: ${this.positionX}px;`;
     }
     //RC Controlled
 
@@ -31,7 +31,7 @@ class Human {
                 if (i === 20) {
                     clearInterval(run);
                 }
-                //this.refresh();
+                this.refresh();
             }, 20)
         }
     }
@@ -45,7 +45,7 @@ class Human {
                 if (i === 20) {
                     clearInterval(run);
                 }
-                //this.refresh();
+                this.refresh();
             }, 20)
         }
     }
@@ -59,7 +59,7 @@ class Human {
                 if (i === 20) {
                     clearInterval(run);
                 }
-                //this.refresh();
+                this.refresh();
             }, 20)
         }
     }
@@ -73,7 +73,7 @@ class Human {
                 if (i === 20) {
                     clearInterval(run);
                 }
-                //this.refresh();
+                this.refresh();
             }, 20)
         }
     }

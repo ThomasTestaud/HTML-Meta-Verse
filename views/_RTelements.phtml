@@ -1,19 +1,78 @@
 
 <?php if(isset($objects)): ?>
 <?php foreach($objects as $object): ?>
-<p>id: <?= $object['id'] ?> type: <?= $object['username'] ?> positionX: <?= $object['positionX'] ?> positionY: <?= $object['positionY'] ?></p>
-
-
-<div class="human object" style="left:<?= $object['positionX'] ?>px; top: <?= $object['positionY'] ?>px;">
-    <span class="username">
-        <?= $object['username'] ?>
-    </span>
-    <?php if(!empty($object['message'])): ?>
-    <span class="message-box">
-        <?= $object['message'] ?>
-    </span>
-    <?php endif; ?>
-</div>
     
+    
+    <?php if($object['username'] === $_SESSION['user']): ?>
+        
+        
+        
+        <?php if($object['type'] === 'human'): ?>
+            <div id="player-human" class="human object">
+        
+        <?php elseif($object['type'] === 'panda'): ?>
+            <div id="player-car" class="car panda object">
+                <div class="headlights">
+                    <div class="headlight headlight-panda"></div>
+                    <div class="headlight headlight-panda"></div>
+                </div>
+                <div class="pare-brise">
+                    <div class="pare-brise-av"></div>
+                    <div class="pare-brise-ar"></div>
+                </div>
+                <div class="rearlights">
+                    <div class="rearlight rearlight-panda"></div>
+                    <div class="rearlight rearlight-panda"></div>
+                </div>
+        
+        <?php endif; ?>
+        
+        <span class="username">
+            <?= $object['username'] ?>
+        </span>
+        <?php if(!empty($object['message'])): ?>
+            <span class="message-box">
+                <?= $object['message'] ?>
+            </span>
+        <?php endif; ?>
+        </div>
+        
+        
+        
+        
+        
+        
+    <?php else: ?>    
+    
+        <?php if($object['type'] === 'human'): ?>
+            <div class="human object" style="left:<?= $object['positionX'] ?>px; top: <?= $object['positionY'] ?>px;">
+        
+        <?php elseif($object['type'] === 'panda'): ?>
+            <div class="car panda object" style="left:<?= $object['positionX'] ?>px; top: <?= $object['positionY'] ?>px; transform: rotate(<?= $object['direction'] ?>deg);">
+                <div class="headlights">
+                    <div class="headlight headlight-panda"></div>
+                    <div class="headlight headlight-panda"></div>
+                </div>
+                <div class="pare-brise">
+                    <div class="pare-brise-av"></div>
+                    <div class="pare-brise-ar"></div>
+                </div>
+                <div class="rearlights">
+                    <div class="rearlight rearlight-panda"></div>
+                    <div class="rearlight rearlight-panda"></div>
+                </div>
+        
+        <?php endif; ?>
+        
+                <span class="username">
+                    <?= $object['username'] ?>
+                </span>
+        <?php if(!empty($object['message'])): ?>
+                <span class="message-box">
+                    <?= $object['message'] ?>
+                </span>
+        <?php endif; ?>
+            </div>
+    <?php endif; ?>
 <?php endforeach; ?>
 <?php endif; ?>

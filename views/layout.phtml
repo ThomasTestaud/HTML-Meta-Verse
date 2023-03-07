@@ -8,17 +8,10 @@
 
 </head>
     <body id="car-city-app" style="position: relative;">
-        <header>
-           <h1> WELCOME TO CAR </h1>
-           <a href="index.php?route=deco">Deco</a>
-        </header>
-        
-        <main>
-            <div id="RTelements">
-                <?php include_once '_RTelements.phtml' ?>
-            </div>
-
+        <div class="car-city-container">
+            <a href="index.php?route=deco">Deco</a>
             <input type="text"  class="chat-bar"name=""/>
+               
             <div class="radio-controller">
                 <button id="rc-up">Up</button>
                 <button id="rc-down">Down</button>
@@ -26,13 +19,17 @@
                 <button id="rc-right">Right</button>
                 <button id="rc-swap" class="none">Swap</button>
             </div>
-        </main>
-        
-        <footer>
-        </footer>
-        
+       
+            <div class="car-city-map">
+                <div id="RTelements">
+                    <?php include_once '_RTelements.phtml' ?>
+                </div>
+    
+                <div class="wall-slot">
+                </div>
+            </div>
+           
+        </div>
         <script type="module" src="main.js"></script>
-        
-        
     </body>
 </html>

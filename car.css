@@ -11,13 +11,13 @@
         bottom: 0rem;
         height: 100vh;
         border: 1px solid black;
-        overflow: hidden;
+        /*overflow: hidden;*/
         font-family: sans-serif;
     }
 
     #car-city-app .car-city-container {
-        height: 100vh;
-        width: 100vw;
+        height: 3000px;
+        width: 3000px;
         overflow: scroll;
 
     }
@@ -254,6 +254,12 @@
         border: 1px solid black;
         border-radius: 0.3rem;
         background-color: white;
-        padding: 0.2rem;
+        padding: 0.3rem;
+    }
+
+    #test {
+        position: absolute;
+        left: 3000px;
+        top: 3000px;
     }
     

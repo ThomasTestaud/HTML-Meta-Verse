@@ -6,19 +6,21 @@ class Objects extends Database {
     
     public function getAllObjects()
     {
-        $req = "SELECT * FROM `objects` ORDER BY id DESC LIMIT 6;";
+        $req = "SELECT * FROM `objects` ORDER BY id DESC LIMIT 5;";
         return $this->findAll($req);
     }
     
-    public function updatePosition($positionX, $positionY, $message, $user)
+    public function updatePosition($positionX, $positionY, $direction, $message, $user, $type)
     {
-        $req = 'UPDATE `objects` SET `positionX`= :posX,`positionY`= :posY,`message`= :msg WHERE `username` = :user';
+        $req = 'UPDATE `objects` SET `positionX`= :posX,`positionY`= :posY,`direction`= :direc,`message`= :msg, `type`= :typ WHERE `username` = :user';
         
         $params = [
             'posX' => $positionX,
             'posY' => $positionY,
+            'direc' => $direction,
             'msg' => $message,
-            'user' => $user
+            'user' => $user,
+            'typ' => $type
         ];
         
         $this->update($req, $params);
