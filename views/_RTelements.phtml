@@ -1,0 +1,19 @@
+
+<?php if(isset($objects)): ?>
+<?php foreach($objects as $object): ?>
+<p>id: <?= $object['id'] ?> type: <?= $object['username'] ?> positionX: <?= $object['positionX'] ?> positionY: <?= $object['positionY'] ?></p>
+
+
+<div class="human object" style="left:<?= $object['positionX'] ?>px; top: <?= $object['positionY'] ?>px;">
+    <span class="username">
+        <?= $object['username'] ?>
+    </span>
+    <?php if(!empty($object['message'])): ?>
+    <span class="message-box">
+        <?= $object['message'] ?>
+    </span>
+    <?php endif; ?>
+</div>
+    
+<?php endforeach; ?>
+<?php endif; ?>
