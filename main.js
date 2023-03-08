@@ -159,4 +159,4 @@ setInterval(function() {
    human.refresh();
   })
 
-}, 150);
+}, 100);
