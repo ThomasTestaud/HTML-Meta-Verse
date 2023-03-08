@@ -1,6 +1,6 @@
 class Human {
     positionX = 200;
-    positionY = 500;
+    positionY = 300;
     used = true;
     id = '';
 

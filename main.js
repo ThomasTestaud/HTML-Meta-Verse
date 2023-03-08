@@ -5,20 +5,12 @@ import Camera from './Camera.js'
 import Wall from './Wall.js'
 
 
-let container = document.querySelector('.car-city-container');
-
-let cont = document.querySelector('.car-city-app');
-
-let camera = new Camera(container);
 
 
 
 
 
-
-
-
-
+//Création des personnages
 let human = new Human('#player');
 let car = new Car('panda');
 let player = human;
@@ -26,13 +18,11 @@ let player = human;
 
 
 
-//container.scrollTo(1000, 0);
-//container.scrollTo(player.positionX, player.positionY);
 
 
 
 
-
+//Création et mapping du Radio Controller
 let rc = new RC();
 
 function map(x) {
@@ -41,13 +31,20 @@ function map(x) {
  rc.mapTurnLeft(x, '#rc-left');
  rc.mapTurnRight(x, '#rc-right');
 }
-
 map(human);
 map(car);
 
 
 
 
+
+//Initialisation de la camera (auto-scroll)
+let container = document.querySelector('.car-city-container');
+let camera = new Camera(container);
+
+setInterval(function() {
+ camera.focus(player);
+}, 10);
 
 
 
@@ -62,12 +59,20 @@ document.addEventListener('keydown', function() {
  message = chatBar.value;
  if (event.ctrlKey) {
   if (type === 'human') {
+
+   car.positionX = human.positionX;
+   car.positionY = human.positionY;
+
    type = 'panda';
    player = car;
    car.use();
 
   }
   else {
+
+   human.positionX = car.positionX;
+   human.positionY = car.positionY;
+
    type = 'human';
    player = human;
    car.use();
@@ -129,6 +134,9 @@ let wall14 = new Wall(-80, -80, 100, 10000);
 ////////////// DATA TRANSMITER
 setInterval(function() {
  // player.refresh;
+
+
+
  let update = new Request('index.php?route=refresh', {
   method: 'POST',
   body: JSON.stringify({
@@ -149,7 +157,6 @@ setInterval(function() {
    RTelements.innerHTML = res;
    car.refresh();
    human.refresh();
-   //camera.focus(player);
   })
 
 }, 150);
